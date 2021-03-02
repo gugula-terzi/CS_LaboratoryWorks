@@ -1,0 +1,304 @@
+﻿<Window x:Class="Lab_3.Register"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_3"
+        mc:Ignorable="d"
+        Title="Register" Height="650" Width="800"
+        MinHeight="650"
+        MinWidth="800"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+    
+    <Grid>
+        <Border CornerRadius="10"
+                Background="#272a32"
+                BorderBrush="white"
+                BorderThickness="2"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Stretch">
+                <Border x:Name="NavPanel" CornerRadius="10, 10, 0, 0"
+                                HorizontalAlignment="Stretch"
+                                Background="Transparent"
+                                MouseDown="NavPanel_MouseDown"
+                                Height="45">
+                    <TextBlock Text="Register"
+                               Foreground="white"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontFamily="{StaticResource MaterialDesignFont}"/>
+                </Border>
+
+                <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0, 0, 0, 0">
+                    <Button x:Name="MinimizeBtn"
+                                    Width="30"
+                                    Height="30"
+                                    Margin="0, 0, 20, 0"
+                                    BorderThickness="0"
+                                    Click="MinimizeBtn_Click"
+                                    Style="{StaticResource NavPanelBtn}">
+                        <materialDesign:PackIcon Kind="HorizontalLine"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#fff"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                    </Button>
+
+                    <Button x:Name="MaximizeBtn"
+                                    Width="30"
+                                    Height="30"
+                                    Margin="0, 0, 20, 0"
+                                    BorderThickness="0"
+                                    Click="MaximizeBtn_Click"
+                                    Style="{StaticResource NavPanelBtn}">
+                        <materialDesign:PackIcon Kind="WindowMaximize"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#fff"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                    </Button>
+
+                    <Button x:Name="CloseBtn"
+                                    Width="30"
+                                    Height="30"
+                                    Margin="0, 0, 10, 0"
+                                    BorderThickness="0"
+                                    Background="Transparent"
+                                    Click="CloseBtn_Click"
+                                    Style="{StaticResource NavPanelBtn}">
+                        <materialDesign:PackIcon Kind="Close"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#fff"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1"
+                  x:Name="RegistrationForm">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0"
+                      Margin="30, 30, 0, 30">
+                    <StackPanel HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 0, 0"
+                                Grid.Row="0">
+                        <TextBox materialDesign:HintAssist.Hint="Login"
+                                 x:Name="LoginBox"
+                             Margin="0, 0, 0, 20"
+                             FontSize="20"
+                             Height="50"
+                             Foreground="White"
+                             materialDesign:TextFieldAssist.UnderlineBrush="white"
+                             materialDesign:HintAssist.IsFloating="False"
+                             HorizontalAlignment="Stretch"
+                             Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}"/>
+                        <PasswordBox Style="{DynamicResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
+                                 FontSize="20"
+                                     x:Name="PassBox"
+                                 Margin="0, 0, 0, 20"
+                                 materialDesign:HintAssist.Hint="Password"
+                                 Foreground="White"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="white"
+                                 materialDesign:HintAssist.IsFloating="False"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Center"/>
+                        <TextBox Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}"
+                             FontSize="20"
+                                 x:Name="EmailBox"
+                             Margin="0, 0, 0, 20"
+                             materialDesign:HintAssist.Hint="Email"
+                             Foreground="White"
+                             materialDesign:TextFieldAssist.UnderlineBrush="white"
+                             materialDesign:HintAssist.IsFloating="False"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"/>
+                        <TextBox Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}"
+                             FontSize="20"
+                                 x:Name="NameBox"
+                             Margin="0, 0, 0, 20"
+                             materialDesign:HintAssist.Hint="Name"
+                             Foreground="White"
+                             materialDesign:TextFieldAssist.UnderlineBrush="white"
+                             materialDesign:HintAssist.IsFloating="False"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"/>
+                        <TextBox Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}"
+                             FontSize="20"
+                                 x:Name="SurnameBox"
+                             Margin="0, 0, 0, 20"
+                             materialDesign:HintAssist.Hint="Surname"
+                             Foreground="White"
+                             materialDesign:TextFieldAssist.UnderlineBrush="white"
+                             materialDesign:HintAssist.IsFloating="False"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"/>
+                        <TextBox Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}"
+                             FontSize="20"
+                             Margin="0, 0, 0, 20"
+                                 x:Name="PatronymicBox"
+                             materialDesign:HintAssist.Hint="Patronymic"
+                             Foreground="White"
+                             materialDesign:TextFieldAssist.UnderlineBrush="white"
+                             materialDesign:HintAssist.IsFloating="False"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Center"/>
+                        <Button x:Name="ClearBtn"
+                                Style="{DynamicResource MaterialDesignFlatLightBgButton}"
+                                Width="300"
+                                Height="50"
+                                Click="ClearBtn_Click"
+                                Margin="20, 20, 20, 0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Clear"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Height="30"
+                                           FontSize="20"
+                                           Foreground="White"/>
+                                <materialDesign:PackIcon Kind="close"
+                                                         Margin="5, 0, 0, 0"
+                                                         Width="30"
+                                                         Height="30"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="White"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Margin="0, 30, 30, 30"
+                      VerticalAlignment="Stretch">
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="Choose your gender"
+                                   FontSize="24"
+                                   Foreground="white"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="0, 20, 0, 0"
+                                    x:Name="RadioBtns">
+                            <RadioButton Content="Femenine"
+                                         x:Name="FemBtn"
+                                         Foreground="White"
+                                         Opacity="0.8"
+                                         FontSize="16"
+                                         Margin="0, 0, 50, 0"/>
+                            <RadioButton Content="Masculine"
+                                         x:Name="MascBtn"
+                                         Foreground="White"
+                                         Opacity="0.8"
+                                         FontSize="16"/>
+                        </StackPanel>
+                        <DatePicker Margin="40, 40, 40, 0"
+                                    x:Name="DateOfBirth"
+                                    materialDesign:HintAssist.Hint="ex: 12/02/2002"
+                                    materialDesign:HintAssist.HelperText="Enter your date of birth"
+                                    FontSize="20"
+                                    BorderBrush="white"
+                                    Foreground="white"
+                                    materialDesign:TextFieldAssist.UnderlineBrush="white"
+                                    materialDesign:HintAssist.IsFloating="False"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    materialDesign:CalendarAssist.IsHeaderVisible="True"
+                                    Style="{DynamicResource MaterialDesignOutlinedDatePicker}">
+                            
+                        </DatePicker>
+                        <ComboBox Margin="40, 40, 40, 0"
+                                  FontSize="20"
+                                  x:Name="MainLanguage"
+                                  materialDesign:TextFieldAssist.UnderlineBrush="white"
+                                  materialDesign:HintAssist.IsFloating="False"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Center"
+                                  BorderBrush="white"
+                                  Foreground="White"
+                                  materialDesign:HintAssist.Hint="Chose your main language"
+                                  Style="{DynamicResource MaterialDesignComboBox}">
+                            <TextBlock>Romanian</TextBlock>
+                            <TextBlock>Russian</TextBlock>
+                            <TextBlock>Gagauzian</TextBlock>
+                            <TextBlock>Bulgarian</TextBlock>
+                            <TextBlock>Ukrainian</TextBlock>
+                        </ComboBox>
+                        <StackPanel Margin="40, 40, 40, 0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="Additional languages"
+                                       FontSize="24"
+                                       Foreground="White"
+                                       Margin="0, 0, 0, 20"/>
+                            <CheckBox Content="English"
+                                      FontSize="16"
+                                      Foreground="White"
+                                      x:Name="EnBox"/>
+                            <CheckBox Content="French"
+                                      FontSize="16"
+                                      x:Name="FrBox"
+                                      Foreground="White"/>
+                            <CheckBox Content="German"
+                                      FontSize="16"
+                                      x:Name="GeBox"
+                                      Foreground="White"/>
+                        </StackPanel>
+                        <Button x:Name="ConfirmBtn"
+                                Style="{DynamicResource MaterialDesignFlatLightBgButton}"
+                                Width="300"
+                                Height="50"
+                                Click="ConfirmBtn_Click"
+                                Margin="20, 40, 20, 0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Confirm"
+                                           Height="30"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="White"/>
+                                <materialDesign:PackIcon Kind="Check"
+                                                         Margin="5, 0, 0, 0"
+                                                         Width="30"
+                                                         Height="30"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="White"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

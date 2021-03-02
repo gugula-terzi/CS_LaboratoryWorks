@@ -1,0 +1,311 @@
+﻿<Window x:Class="MyProject.LiquidConvert"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyProject"
+        mc:Ignorable="d"
+        Title="Liquid Converter"
+        Height="350" Width="650" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        Background="Transparent"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid Margin="5, 5, 20, 20">
+            <Border CornerRadius="10" Background="#181b26">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                  Color="#424242" 
+                                  ShadowDepth="5"
+                                  Opacity="1"/>
+                </Border.Effect>
+            </Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!-- Navigation panel start -->
+                <Grid Grid.Row="0"
+                  VerticalAlignment="Top"
+                  Height="30"
+                  HorizontalAlignment="Stretch"
+                  Margin="0, 0, 0, 0">
+
+                    <Border CornerRadius="50"
+                        Background="white"
+                        HorizontalAlignment="Stretch"
+                        Margin="0, 10, 0, 0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20"
+                                          Color="#424242" 
+                                          ShadowDepth="0.5"
+                                          Opacity="0.3"/>
+                        </Border.Effect>
+                    </Border>
+
+                    <Border x:Name="NavPanel" CornerRadius="10, 10, 0, 0"
+                                              HorizontalAlignment="Stretch"
+                                              Background="#1a1d29"
+                                              MouseDown="NavPanel_MouseDown"
+                                              Height="30">
+
+                    </Border>
+                    <TextBlock Text="Liquid converter"
+                               MouseDown="NavPanel_MouseDown"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontFamily="Century Gothic"
+                               Foreground="#42475e"
+                               Opacity="1"/>
+                    <Image Source="Images/beaker.png"
+                           Width="20"
+                           Height="20"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="15, 0, 0, 0"/>
+
+                    <Button Width="25"
+                        Height="25"
+                        Margin="0, 0, 5, 0"
+                        Style="{StaticResource CloseBtn}"
+                        Click="CloseBtn_Click"
+                        HorizontalAlignment="Right">
+                        <materialDesign:PackIcon Kind="CloseBox"
+                                             Width="25"
+                                             Height="25"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             Opacity="1"/>
+                    </Button>
+
+                    <Button Margin="0, 0, 35, 0"
+                        Style="{StaticResource HideBtn}"
+                        HorizontalAlignment="Right"
+                        Click="HideBtn_Click"
+                        VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="WindowMinimize"
+                                             Opacity="1"
+                                             Width="25"
+                                             Height="25"
+                                             HorizontalAlignment="Center"
+                                             VerticalAlignment="Center"/>
+                    </Button>
+                </Grid>
+                <!-- Navigation panel end -->
+
+                <!-- Main panel start -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    Margin="0, 0, 0, 30">
+                            <TextBox Name="DegreeTextBox"
+                                     TextChanged="DegreeTextBox_TextChanged"
+                                     PreviewTextInput="DegreeTextBox_PreviewTextInput"
+                                     materialDesign:HintAssist.Hint="Enter the value here"
+                                     FontFamily="Century Gothic"
+                                     FontSize="20"
+                                     Foreground="#42475e"
+                                     BorderBrush="#42475e"
+                                     HorizontalAlignment="Center"
+                                     Width="220"
+                                     HorizontalContentAlignment="Center"/>
+                            <TextBlock Text="L"
+                                       ToolTip="liter"
+                                       VerticalAlignment="Center"
+                                       FontSize="30"
+                                       Width="40"
+                                       Height="40"
+                                       FontWeight="Bold"
+                                       FontFamily="Calibri"
+                                       Foreground="#42475e"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <Button x:Name="ConvertDestanceBtn"
+                                    Click="ConvertDestanceBtn_Click"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    Height="50"
+                                    Style="{StaticResource StandardBtn}" >
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Margin="10">
+
+                                    <materialDesign:PackIcon Kind="Calculator"
+                                                             Foreground="White"
+                                                             Width="25"
+                                                             Height="25"
+                                                             HorizontalAlignment="Center"
+                                                             VerticalAlignment="Center"/>
+                                    <Label FontFamily="Century Gothic"
+                                           FontSize="18"
+                                           FontWeight="Bold"
+                                           Foreground="white"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           VerticalContentAlignment="Center"
+                                           HorizontalContentAlignment="Center">
+                                        CONVERT
+                                    </Label>
+
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right">
+
+                                <Label x:Name="CubicMeterLabel"
+                                        FontFamily="Century Gothic"
+                                        FontSize="24"
+                                        FontWeight="Bold"
+                                        Foreground="#42475e"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                                <materialDesign:PackIcon Kind="CupLiquid"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#42475e"
+                                                         VerticalAlignment="Center"/>
+
+                                <TextBlock Text="m&#179;"
+                                           ToolTip="Cubic meter"
+                                           VerticalAlignment="Center"
+                                           FontSize="30"
+                                           Width="75"
+                                           Height="40"
+                                           FontWeight="Bold"
+                                           FontFamily="Calibri"
+                                           Foreground="#42475e"/>
+
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right">
+
+                                <Label x:Name="BarrelLabel"
+                                       FontFamily="Century Gothic"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#42475e"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center"/>
+
+                                <materialDesign:PackIcon Kind="CupLiquid"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#42475e"
+                                                         VerticalAlignment="Center"/>
+
+                                <TextBlock Text="bbl"
+                                           ToolTip="Barrel"
+                                           VerticalAlignment="Center"
+                                           FontSize="30"
+                                           Width="75"
+                                           Height="40"
+                                           FontWeight="Bold"
+                                           FontFamily="Calibri"
+                                           Foreground="#42475e"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right">
+
+                                <Label x:Name="GallonLabel"
+                                       FontFamily="Century Gothic"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#42475e"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center"/>
+
+                                <materialDesign:PackIcon Kind="CupLiquid"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#42475e"
+                                                         VerticalAlignment="Center"/>
+
+                                <TextBlock Text="gal"
+                                           ToolTip="Galoon"
+                                           VerticalAlignment="Center"
+                                           FontSize="30"
+                                           Width="75"
+                                           Height="40"
+                                           FontWeight="Bold"
+                                           FontFamily="Calibri"
+                                           Foreground="#42475e"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right">
+
+                                <Label x:Name="BusheLabel"
+                                       FontFamily="Century Gothic"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="#42475e"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       VerticalContentAlignment="Center"
+                                       HorizontalContentAlignment="Center"/>
+
+                                <materialDesign:PackIcon Kind="CupLiquid"
+                                                         Width="30"
+                                                         Height="30"
+                                                         Foreground="#42475e"
+                                                         VerticalAlignment="Center"/>
+
+                                <TextBlock Text="bu"
+                                           ToolTip="Bushels"
+                                           VerticalAlignment="Center"
+                                           FontSize="30"
+                                           Width="75"
+                                           Height="40"
+                                           FontWeight="Bold"
+                                           FontFamily="Calibri"
+                                           Foreground="#42475e"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <!-- Main panel end -->
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

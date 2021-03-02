@@ -1,0 +1,200 @@
+﻿<Window x:Class="Lab_5.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_5"
+        mc:Ignorable="d"
+        Icon="calculator.ico"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Credit Calculator" Height="500" Width="500">
+
+
+    <Grid Margin="5, 5, 20, 20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="84*"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="#1e2126"
+                CornerRadius="5" Grid.ColumnSpan="2">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="8"
+                                  Color="#424242" 
+                                  ShadowDepth="3"
+                                  Opacity="0.8"/>
+            </Border.Effect>
+        </Border>
+        <Grid Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid x:Name="NavPanel"
+                      HorizontalAlignment="Stretch"
+                      MouseDown="NavPanel_MouseDown">
+                    <Border Background="#424348"
+                            CornerRadius="5, 5, 0, 0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Color="#424242" 
+                                              ShadowDepth="0"
+                                              Opacity="0.5"/>
+                        </Border.Effect>
+                    </Border>
+                    <TextBlock Text="Credit Calculator"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               FontFamily="Merriweather Sans"
+                               Foreground="#d4d4d4"/>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                        <Button x:Name="MinimizeBtn"
+                                Width="15"
+                                Height="15"
+                                Margin="10, 0"
+                                Click="MinimizeBtn_Click"
+                                Style="{DynamicResource CircleMinimizeButton}">
+                            <materialDesign:PackIcon Kind="WindowMinimize"
+                                                     Opacity="1"
+                                                     FontWeight="Bold"
+                                                     Width="11"
+                                                     Height="11"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                        </Button>
+                        <Button x:Name="CloseBtn"
+                                Width="15"
+                                Height="15"
+                                Margin="0, 0, 10, 0"
+                                Click="CloseBtn_Click"
+                                Style="{DynamicResource CircleCloseButton}">
+                            <materialDesign:PackIcon Kind="Close"
+                                                     Opacity="0.8"
+                                                     FontWeight="Bold"
+                                                     Width="15"
+                                                     Height="15"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <StackPanel Margin="30, 10">
+                            <Label Content="Enter the loan amount"
+                                   Foreground="#d4d4d4"
+                                   FontSize="16"
+                                   FontFamily="Fira Code"/>
+                            <TextBox x:Name="AmountOfLoanTextBox"
+                                     Height="35"
+                                     FontSize="18"
+                                     PreviewTextInput="CheckInput_PreviewTextInput"
+                                     Style="{DynamicResource StandardTextBox}"
+                                     FontFamily="Fira Code"/>
+                        </StackPanel>
+                        <StackPanel Margin="30, 10">
+                            <Label Content="Enter loan period in months"
+                                   Foreground="#d4d4d4"
+                                   FontSize="16"
+                                   FontFamily="Fira Code"/>
+                            <TextBox x:Name="LoanPeriodTextBox"
+                                     Height="35"
+                                     FontSize="18"
+                                     FontFamily="Fira Code"
+                                     PreviewTextInput="LoanPeriodTextBox_PreviewTextInput"
+                                     Style="{DynamicResource StandardTextBox}"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="30, 0">
+                            <Label Content="Select the loan type"
+                                   Foreground="#d4d4d4"
+                                   FontSize="16"
+                                   FontFamily="Fira code"/>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Stretch">
+                                <ComboBox Style="{DynamicResource ComboBoxStandard}"
+                                          SelectionChanged="InterestRateComboBox_SelectionChanged"
+                                          x:Name="InterestRateComboBox"
+                                          FontFamily="Fira Code"
+                                          Height="35"
+                                          Width="350"
+                                          FontSize="16"
+                                          Foreground="#d4d4d4"
+                                          VerticalContentAlignment="Center">
+                                    <ComboBoxItem Style="{DynamicResource ComboBoxItem}"
+                                          Content="Credit imobiliar Prima Casă"/>
+                                    <ComboBoxItem Style="{DynamicResource ComboBoxItem}"
+                                          Content="Multiopţional"/>
+                                    <ComboBoxItem Style="{DynamicResource ComboBoxItem}"
+                                          Content="Cheltuieli personale"/>
+                                    <ComboBoxItem Style="{DynamicResource ComboBoxItem}"
+                                          Content="Credit Espresso"/>
+                                </ComboBox>
+                                <TextBox Text=""
+                                         x:Name="InterestRateTextBox"
+                                         HorizontalAlignment="Right"
+                                         Margin="5, 0"
+                                         IsReadOnly="True"
+                                         Style="{DynamicResource StandardTextBox}"
+                                         Height="35"
+                                         Width="60"
+                                         Padding="3, 0"
+                                         FontSize="16"
+                                         Cursor="Arrow"
+                                         HorizontalContentAlignment="Center"
+                                         VerticalContentAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         FontFamily="Fira Code"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <DatePicker Margin="30, 20"
+                                    x:Name="CreditCreationDate"
+                                    FontFamily="Fira Code"
+                                    FontSize="16"
+                                    Foreground="#d4d4d4"
+                                    VerticalContentAlignment="Center"
+                                    materialDesign:TextFieldAssist.TextBoxViewMargin="0"
+                                    materialDesign:TextFieldAssist.UnderlineCornerRadius="3"
+                                    materialDesign:TextFieldAssist.TextFieldCornerRadius="3"
+                                    materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    materialDesign:HintAssist.Hint="Choose the credit date"
+                                    Background="#14161a"
+                                    materialDesign:CalendarAssist.IsHeaderVisible="False"
+                                    Style="{DynamicResource MaterialDesignDatePicker}"/>
+
+                        <Button Height="50"
+                                x:Name="CalculateBtn"
+                                Click="CalculateBtn_Click"
+                                Style="{DynamicResource StandardButton}"
+                                Margin="150, 20">
+                            <StackPanel Orientation="Horizontal"
+                                        VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Calculator"
+                                                         Width="25"
+                                                         Height="25"
+                                                         Margin="0, 0, 10, 0"/>
+                                <TextBlock Text="Calculate"
+                                           FontFamily="Fira Code"
+                                           VerticalAlignment="Center"
+                                           FontSize="18"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

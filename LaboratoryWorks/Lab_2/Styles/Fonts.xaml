@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MyProject">
+    <FontFamily x:Key="MerriweatherRegular">pack://application;,,,/Fonts/#Merriweather Sans Regular</FontFamily>
+    <FontFamily x:Key="FiraRegular">pack://application:,,,/Fonts/#Fira Sans Regular</FontFamily>
+</ResourceDictionary>

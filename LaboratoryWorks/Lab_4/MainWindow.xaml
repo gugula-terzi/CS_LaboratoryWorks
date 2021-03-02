@@ -1,0 +1,368 @@
+﻿<Window x:Class="Lab_4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800"
+        MinHeight="600"
+        MinWidth="800"
+        ResizeMode="CanResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="0"
+        ResizeBorderThickness="5"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid SnapsToDevicePixels="True">
+        <Border CornerRadius="20"
+                Background="#C493FF">
+            
+        </Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid x:Name="NavPanel"
+                      MouseDown="NavPanel_MouseDown"
+                      Height="50">
+                    <Border CornerRadius="20, 20, 0, 0"
+                            Background="#845EC2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Opacity="0.2"/>
+                        </Border.Effect>
+                    </Border>
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Viewbox Stretch="Fill"
+                                 Width="250">
+                            <Label Content="Working with strings"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="#FEFEDF"
+                                   FontFamily="Merriweather Sans"/>
+                        </Viewbox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right">
+                        <Button x:Name="MinimizeBtn"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 10, 0"
+                            Width="40"
+                            Height="40"
+                            Style="{StaticResource SimpleButton}"
+                            Click="MinimizeBtn_Click">
+                            <materialDesign:PackIcon Kind="WindowMinimize"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Width="30"
+                                                     Height="30"
+                                                     Foreground="white"/>
+                        </Button>
+                        <Button x:Name="MaximizeBtn"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Margin="0, 0, 10, 0"
+                            Width="40"
+                            Height="40"
+                            Style="{StaticResource SimpleButton}"
+                            Click="MaximizeBtn_Click">
+                            <materialDesign:PackIcon Kind="WindowMaximize"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Width="30"
+                                                     Height="30"
+                                                     Foreground="white"/>
+                        </Button>
+                        <Button x:Name="CloseBtn"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 10, 0"
+                                Width="40"
+                                Height="40"
+                                Style="{StaticResource SimpleButton}"
+                                Click="CloseBtn_Click">
+                            <materialDesign:PackIcon Kind="Close"
+                                                     HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center"
+                                                     Width="30"
+                                                     Height="30"
+                                                     Foreground="white"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>                
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0"
+                      Margin="20">
+                    <Viewbox Stretch="Uniform"
+                             VerticalAlignment="Center">
+                        <StackPanel>
+                            <GroupBox Header="Word replace"
+                                        Style="{x:Null}"
+                                        Padding="10"
+                                        Foreground="White"
+                                        BorderBrush="white">
+                                <StackPanel>
+                                    <TextBox x:Name="SearchWordBox"
+                                             materialDesign:HintAssist.Hint="search word"
+                                             materialDesign:TextFieldAssist.HasFilledTextField="True"
+                                             materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                                             materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                                             HorizontalAlignment="Stretch"
+                                             VerticalAlignment="Top"
+                                             BorderBrush="white"
+                                             MinHeight="30"
+                                             Margin="0, 0, 0, 10"/>
+                                    <TextBox x:Name="ReplaceWithBox"
+                                             materialDesign:HintAssist.Hint="replace with"
+                                            materialDesign:TextFieldAssist.HasFilledTextField="True"
+                                            materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                                            materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                                            HorizontalAlignment="Stretch"
+                                            BorderBrush="White"
+                                            VerticalAlignment="Top"
+                                            Margin="0, 0, 0, 10"/>
+                                    <Button x:Name="ReplaceBtn"
+                                            Style="{DynamicResource MaterialDesignRaisedLightButton}"
+                                            MaxHeight="30"
+                                            Click="ReplaceBtn_Click">
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                            <materialDesign:PackIcon Kind="FindReplace"
+                                                                    HorizontalAlignment="Center"
+                                                                    VerticalAlignment="Center"
+                                                                    Foreground="#333"
+                                                                    Height="20"
+                                                                    Width="20"/>
+                                            <Label Content="replace"
+                                                    Foreground="#333"
+                                                    FontFamily="Merriweather"
+                                                    Opacity="0.8"
+                                                    Height="20"
+                                                   Padding="0"
+                                                    Style="{x:Null}"
+                                                    VerticalContentAlignment="Center"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Margin="0, 10"
+                                      Padding="10"
+                                      Header="Encryption"
+                                      FontFamily="Merriweather Sans"
+                                      Foreground="#FEFEDF"
+                                      Style="{x:Null}"
+                                      BorderBrush="white"
+                                      BorderThickness="1">
+                                <StackPanel>
+                                    <Button MaxHeight="30"
+                                            x:Name="EncryptBtn"
+                                            Click="EncryptBtn_Click"
+                                            Style="{DynamicResource MaterialDesignRaisedLightButton}">
+                                                    <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                            <materialDesign:PackIcon Kind="Lock"
+                                                                     HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Center"
+                                                                     Foreground="#333"/>
+                                            <Viewbox Stretch="Uniform">
+                                                <Label Content="encrypt"
+                                                       Foreground="#333"
+                                                        FontFamily="Merriweather"
+                                                        Opacity="0.8"
+                                                        Style="{x:Null}"
+                                                        VerticalContentAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"/>
+                                            </Viewbox>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button MaxHeight="30"
+                                            x:Name="DecipherBtn"
+                                            Click="DecipherBtn_Click"
+                                            Margin="0, 10, 0, 0"
+                                            Style="{DynamicResource MaterialDesignRaisedLightButton}">
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                            <materialDesign:PackIcon Kind="Key"
+                                                                     HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Center"
+                                                                     Foreground="#333"/>
+                                            <Viewbox Stretch="Uniform">
+                                                <Label Content="decipher"
+                                                       Foreground="#333"
+                                                        FontFamily="Merriweather"
+                                                        Opacity="0.8"
+                                                        Style="{x:Null}"
+                                                        VerticalContentAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"/>
+                                            </Viewbox>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Margin="20">
+                    <StackPanel HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center">
+                        <TextBox x:Name="MainTextBox"
+                                 TextWrapping="Wrap"
+                                 Foreground="#333"
+                                 FontSize="20"
+                                 Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+                                materialDesign:HintAssist.Hint="Enter your text here..."
+                                materialDesign:TextFieldAssist.HasFilledTextField="True"
+                                materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                                materialDesign:TextFieldAssist.TextFieldCornerRadius="5"
+                                AcceptsReturn="True"
+                                MinHeight="300"
+                                HorizontalAlignment="Stretch"
+                                VerticalScrollBarVisibility="Auto"
+                                 Height="auto"
+                                Margin="0, 10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock Foreground="white"
+                                            HorizontalAlignment="Left"
+                                            x:Name="CountSentencesTextBlock"
+                                            FontSize="14"
+                                            FontFamily="Merriweather Sans"
+                                            TextDecorations="underline" MouseDown="CountSentencesTextBlock_MouseDown">count sentences</TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBlock Foreground="white"
+                                           HorizontalAlignment="Right"
+                                            FontSize="14"
+                                            TextDecorations="underline"
+                                            Text="evaluate arithmetic expression"
+                                            x:Name="ResolveTextBlock"
+                                            FontFamily="Merriweather Sans"
+                                           MouseDown="ResolveTextBlock_MouseDown"/>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <Grid Margin="0, 5">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="Number of sentences:"
+                                           x:Name="DescriptionLabel"
+                                           Visibility="Visible"
+                                           Foreground="#FEFEDF"
+                                           FontSize="20"
+                                           FontFamily="Merriweather Sans"
+                                           Margin="0, 10"/>
+                                    <TextBlock Text="0"
+                                               VerticalAlignment="Center"
+                                               Foreground="#FEFEDF"
+                                               FontSize="20"
+                                               FontFamily="Merriweather Sans"
+                                               Margin="5, 10"
+                                               x:Name="NumberOfSentenceLabel"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0"
+                                  Height="60">
+                                <StackPanel Orientation="Horizontal"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                    <Button MaxWidth="300"
+                                            x:Name="AnagramBtn"
+                                            Click="AnagramBtn_Click"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Height="50"
+                                            Style="{DynamicResource MaterialDesignRaisedLightButton}">
+                                        <StackPanel Orientation="Horizontal"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                            <materialDesign:PackIcon Kind="FileFind"
+                                                                     HorizontalAlignment="Center"
+                                                                     VerticalAlignment="Center"
+                                                                     Foreground="#333"
+                                                                     Height="30"
+                                                                     Width="30"/>
+                                            <Viewbox Stretch="Uniform">
+                                                <Label Content="find anagrams"
+                                                       Foreground="#333"
+                                                        FontFamily="Merriweather"
+                                                        Opacity="0.8"
+                                                        Style="{x:Null}"
+                                                        VerticalContentAlignment="Center"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"/>
+                                            </Viewbox>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button MaxWidth="300"
+                                        x:Name="CapitalizeBtn"
+                                        Click="CapitalizeBtn_Click"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Height="50"
+                                        Style="{DynamicResource MaterialDesignRaisedLightButton}">
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center">
+                                        <materialDesign:PackIcon Kind="FormatUppercase"
+                                                                 HorizontalAlignment="Center"
+                                                                 VerticalAlignment="Center"
+                                                                 Foreground="#333"
+                                                                 Height="30"
+                                                                 Width="30"/>
+                                        <Viewbox Stretch="Uniform">
+                                            <Label Content="Capital letter"
+                                                   Foreground="#333"
+                                                    FontFamily="Merriweather"
+                                                    Opacity="0.8"
+                                                    Style="{x:Null}"
+                                                    VerticalContentAlignment="Center"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"/>
+                                        </Viewbox>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
