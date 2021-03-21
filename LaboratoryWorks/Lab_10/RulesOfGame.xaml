@@ -1,0 +1,64 @@
+﻿<Window x:Class="Lab_10.RulesOfGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Lab_10"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Title="RulesOfGame" Height="350" Width="600">
+    <Grid Margin="10"
+          MouseDown="Grid_MouseDown">
+        <Border CornerRadius="30"
+                Background="#151515">
+            <Border.Effect>
+                <DropShadowEffect Direction="-90" Opacity="0.5" BlurRadius="10"/>
+            </Border.Effect>
+        </Border>
+        <Button Style="{DynamicResource FlatCloseButton}"
+                Width="30"
+                Height="30"
+                Click="Button_Click"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0, 20, 20, 0">
+            <materialDesign:PackIcon Kind="Close"
+                                     Width="20"
+                                     Height="20"
+                                     Foreground="white"/>
+        </Button>
+        <TextBlock VerticalAlignment="Top"
+                   Margin="0, 70"
+                   HorizontalAlignment="Center"
+                   Text="The rules of this game"
+                   Foreground="White"
+                   FontSize="24"
+                   FontWeight="Bold" 
+                   FontFamily="/Lab_10;component/Fonts/#TT Firs Neue"/>
+        <TextBlock VerticalAlignment="Center"
+                   Text="Random images will be output. The player must enter the answer - the name of the object shown in the picture in English. The game is given 60 seconds. After this time, he user will see the number of correct and incorrect answers."
+                   Foreground="White"
+                   TextWrapping="Wrap"
+                   TextAlignment="Justify"
+                   FontSize="18"
+                   Margin="20, 0"
+                   FontFamily="/Lab_10;component/Fonts/#TT Firs Neue"/>
+        <TextBlock Text="Good luck!"
+                   Foreground="White"
+                   FontSize="18"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   FontFamily="/Lab_10;component/Fonts/#TT Firs Neue"
+                   Margin="0, 0, 0, 80"/>
+        <TextBlock Text="Made by: gugulenok"
+                   Foreground="White"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Right"
+                   FontFamily="/Lab_10;component/Fonts/#TT Firs Neue"
+                   Margin="0, 0, 20, 20"/>
+    </Grid>
+</Window>

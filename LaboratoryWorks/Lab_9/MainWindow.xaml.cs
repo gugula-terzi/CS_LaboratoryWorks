@@ -220,5 +220,7 @@ namespace Lab_9
         {
             e.CanExecute = true;
         }
+
+        
     }
 }
