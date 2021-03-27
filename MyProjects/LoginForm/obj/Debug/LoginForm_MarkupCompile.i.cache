@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\App.xaml
-5-860172309
+7-1900052343
 
-8-1485377980
-39-1607090076
-Fonts.xaml;MainWindow.xaml;Registration.xaml;Styles\ButtonStyles.xaml;Styles\TextBoxStyles.xaml;
+101089819775
+50-1396759423
+Animations\WindowAnimations.xaml;MainWindow.xaml;MessageWindow.xaml;RegistrationWindow.xaml;StoreWindow.xaml;Styles\ButtonStyles.xaml;Styles\TextBoxStyles.xaml;
 
 True
 

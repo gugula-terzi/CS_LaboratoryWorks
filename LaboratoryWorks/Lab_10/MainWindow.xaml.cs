@@ -230,7 +230,7 @@ namespace Lab_10
             src.UriSource = new Uri(@path, UriKind.Relative);
             ImageWindow.Source = src;
 
-            if (AnswerTextBox.Text == array[random_fruit][0])
+            if (AnswerTextBox.Text.ToLower() == array[random_fruit][0])
             {
                 int correct = Convert.ToInt32(CorrectCount.Text);
                 correct++;
