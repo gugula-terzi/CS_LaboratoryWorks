@@ -1,0 +1,223 @@
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace LoginForm
+{
+    /// <summary>
+    /// Interaction logic for StoreWindow.xaml
+    /// </summary>
+    public partial class StoreWindow : Window
+    {
+
+        //DataSet ds;
+        //MySqlDataAdapter adapter;
+        public StoreWindow()
+        {
+            InitializeComponent();
+                        
+            SaveBtn.Visibility = Visibility.Hidden;
+            CategoryComboBox.IsEnabled = false;
+        }
+
+        public void GetInfoFromTable(string sql_query, string table_name)
+        {
+            try
+            {
+                myConn.Open();
+                myDataAdapter = new MySqlDataAdapter { SelectCommand = new MySqlCommand() { Connection = myConn, CommandText = sql_query } };
+                myDataSet = new DataSet();
+                myDataAdapter.Fill(myDataSet, table_name);
+                InfoGrid.DataContext = myDataSet.Tables[table_name].DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                myConn.Close();
+            }
+
+            //ds = new DataSet();
+
+            //var connectionString = ConfigurationManager.ConnectionStrings["HerokuDB"].ConnectionString; // getting connection string from "App.config" file
+
+            //MySqlConnection connection = new MySqlConnection(connectionString); // creating connection with database
+            //connection.Open();
+
+            //MySqlCommand createCommand = new MySqlCommand(sql_query, connection);
+            //createCommand.ExecuteNonQuery();
+
+            //adapter = new MySqlDataAdapter(createCommand);
+            //adapter.Fill(ds, table_name);
+
+            //DataTable dt = ds.Tables[table_name];
+
+            //InfoGrid.ItemsSource = dt.DefaultView;
+            //connection.Close();
+        }
+
+        private void UsersTableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> col_names = new List<string>() { "ID", "Login", "Hash", "Salt", "Name", "Last name", "Email", "Role", "Created at", "Last login" };
+            string get_all_info = "SELECT user_id AS \"ID\", user_login AS \"Login\", password_hash AS \"Hash\", password_salt AS \"Salt\", user_name AS \"Name\", user_lastname AS \"Last name\", email AS \"Email\", user_role AS \"Role\", created_at AS \"Created at\", last_login AS \"Last login\" FROM users;";
+            GetInfoFromTable(get_all_info, "Users");     
+            CategoryComboBox.ItemsSource = col_names;
+            CategoryComboBox.IsEnabled = true;
+        }
+
+        private void InfoGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex()).ToString();
+        }
+
+        private void RolesTableBtn_Click(object sender, RoutedEventArgs e)
+        {            
+            List<string> col_names = new List<string>() { "ID", "Role type" };
+            string get_all_info = "SELECT role_id, role_type FROM roles;";
+            GetInfoFromTable(get_all_info, "roles");
+            CategoryComboBox.ItemsSource = col_names;
+            CategoryComboBox.IsEnabled = true;
+        }
+
+        private void GraphicsCardTableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> col_names = new List<string>() { "ID", "Name", "VRAM Type", "Capacity", "Price" };
+            string get_all_info = "SELECT product_id, product_name, vram_type, vram_capacity, price FROM graphics_card;";
+            GetInfoFromTable(get_all_info, "graphics_card");
+            CategoryComboBox.ItemsSource = col_names;
+            CategoryComboBox.IsEnabled = true;
+        }
+
+        private void ProcessorTableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> col_names = new List<string>() { "ID", "Name", "Socket", "Cores", "Threads", "Frequency GHz", "Price" };
+            string get_all_info = "SELECT product_id, product_name, cpu_socket, cpu_cores, threads, cpu_speed, price FROM processor;";
+            GetInfoFromTable(get_all_info, "processor");
+            CategoryComboBox.ItemsSource = col_names;
+            CategoryComboBox.IsEnabled = true;
+        }
+
+        private void RAMTableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> col_names = new List<string>() { "ID", "Name", "DDR Type", "Frequency MHz", "Capacity", "Price" };
+            string get_all_info = "SELECT product_id AS \"ID\", product_name AS \"Name\", ddr_type AS \"DDR Type\", frequency_MHz AS \"Frequency MHz\", capacity_gb AS \"Capacity\", price AS \"Price\" FROM ram;";
+            GetInfoFromTable(get_all_info, "ram");
+            CategoryComboBox.ItemsSource = col_names;
+            CategoryComboBox.IsEnabled = true;
+        }
+
+        private void NavPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
+        }
+
+        //public void save()
+        //{
+        //    using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
+        //            MySqlCommand command = new MySqlCommand("Select * from " + table.TableName, connection);
+        //            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+        //            MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter);
+
+        //            adapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+        //            adapter.DeleteCommand = commandBuilder.GetDeleteCommand();
+        //            adapter.Update(table);
+
+        //            table.AcceptChanges();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            connection.Close();
+        //        }
+        //    }
+        //}
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            //using (MySqlConnection connection = new MySqlConnection(connectionString))
+            //{
+            //    try
+            //    {
+            //        DataTable dt = new DataTable();
+            //        DataSet ds = new DataSet();
+            //        dt = ((DataView)InfoGrid.ItemsSource).ToTable() as DataTable;
+            //        ds.Tables.Add(dt);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.ToString());
+            //    }
+            //    finally
+            //    {
+            //        connection.Close();
+            //    }
+            //}
+        }
+
+        private MySqlDataAdapter myDataAdapter;
+        private DataSet myDataSet;
+        private MySqlCommandBuilder myBuilder;
+        static string connectionString = ConfigurationManager.ConnectionStrings["HerokuDB"].ConnectionString;
+        private MySqlConnection myConn = new MySqlConnection(connectionString);
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SaveBtn.Visibility = Visibility.Visible;
+            InfoGrid.IsReadOnly = false;
+        }
+
+        private void dtGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            myBuilder = new MySqlCommandBuilder(myDataAdapter);
+            DataRowView myDRV = (DataRowView)InfoGrid.SelectedItem;
+            myDRV.BeginEdit();
+        }
+
+        private void dtGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            DataRowView myDRV = (DataRowView)InfoGrid.SelectedItem;
+            myDRV.EndEdit();
+            myDataAdapter.UpdateCommand = myBuilder.GetUpdateCommand();
+            myDataAdapter.Update(myDataSet, myDataSet.Tables[]);
+        }
+
+        private void dtGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            var tc = e.Column as System.Windows.Controls.DataGridTextColumn;
+            var b = tc.Binding as System.Windows.Data.Binding;
+
+            b.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+            b.ValidatesOnDataErrors = true;
+            b.NotifyOnValidationError = true;
+        }
+    }
+}

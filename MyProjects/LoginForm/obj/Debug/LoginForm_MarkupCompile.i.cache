@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\App.xaml
-7-1900052343
+8765841529
 
 101089819775
 50-1396759423
-Animations\WindowAnimations.xaml;MainWindow.xaml;MessageWindow.xaml;RegistrationWindow.xaml;StoreWindow.xaml;Styles\ButtonStyles.xaml;Styles\TextBoxStyles.xaml;
+MainWindow.xaml;MessageWindow.xaml;RegistrationWindow.xaml;StoreWindow.xaml;Styles\Button.xaml;Styles\ComboBox.xaml;Styles\DataGrid.xaml;Styles\TextBox.xaml;
 
 True
 

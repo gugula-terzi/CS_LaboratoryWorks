@@ -63,8 +63,6 @@ D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\LoginForm_MarkupCompile.cac
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\LoginForm_MarkupCompile.lref
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\App.baml
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\MainWindow.baml
-D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Styles\ButtonStyles.baml
-D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Styles\TextBoxStyles.baml
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\LoginForm.g.resources
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\LoginForm.Properties.Resources.resources
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\LoginForm.csproj.GenerateResource.cache
@@ -106,7 +104,6 @@ D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\StoreWindow.g.cs
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\StoreWindow.baml
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\MessageWindow.g.cs
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\MessageWindow.baml
-D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Animations\WindowAnimations.baml
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\BouncyCastle.Crypto.dll
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\Google.Protobuf.dll
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\K4os.Compression.LZ4.dll
@@ -123,3 +120,7 @@ D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\K4os.Compression.LZ4.Stream
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\K4os.Hash.xxHash.xml
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\MySql.Data.xml
 D:\CS_LaboratoryWorks\MyProjects\LoginForm\bin\Debug\Renci.SshNet.xml
+D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Styles\ComboBox.baml
+D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Styles\DataGrid.baml
+D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Styles\Button.baml
+D:\CS_LaboratoryWorks\MyProjects\LoginForm\obj\Debug\Styles\TextBox.baml

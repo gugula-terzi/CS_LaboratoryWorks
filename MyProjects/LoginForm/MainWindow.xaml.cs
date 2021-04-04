@@ -199,7 +199,6 @@ namespace LoginForm
                 {
                     // Login Failed
                     // if password is wrong this animation will be played
-                    
                     Storyboard wrong_pass = Resources["WrongPassword"] as Storyboard;
                     wrong_pass.Begin();
                     LoginBox.Clear();
